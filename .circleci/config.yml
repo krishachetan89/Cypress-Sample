@@ -29,7 +29,7 @@ workflows:
            build: "npm run build"
            start: "npm run server"
 
- run only specific spec file
+ #run only 1 specific spec file
  workflows:
    build:
      jobs:
