@@ -1,11 +1,9 @@
-# login-app-reactjs
-Example: How to create login form in ReactJS using secure REST API
+# React Login Form Sample
 
-## Setup
-Follow below steps to run project
+## Usage
 
-1. Clone repository
-2. Run `npm i` command to install dependencies
-3. Execute `npm start` command to run the project
-
-## Output 
+### Run the app
+```
+$ npm install
+$ npm start
+```
