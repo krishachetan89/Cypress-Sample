@@ -1,3 +1,8 @@
 {
-  "projectId": "j35334"
+  "baseUrl": "https://krishnachetan.medium.com",
+  "video": true,
+  "reporterOptions": {
+    "mochaFile": "cypress/results/tests-[hash].xml",
+    "toConsole": true
+}
 }
