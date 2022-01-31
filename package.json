@@ -1,48 +1,58 @@
 {
-  "name": "react-login-form-sample",
-  "version": "0.1.0",
+  "name": "cypress-example-circleci-orb",
+  "version": "1.0.0",
+  "description": "Example project that shows Cypress CircleCI Orb in action",
+  "main": "index.js",
   "private": true,
-  "dependencies": {
-    "@emotion/core": "^10.0.15",
-    "@emotion/styled": "^10.0.15",
-    "@fortawesome/fontawesome-svg-core": "^1.2.21",
-    "@fortawesome/free-solid-svg-icons": "^5.10.1",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "@types/jest": "24.0.17",
-    "@types/node": "12.7.1",
-    "@types/react": "16.9.1",
-    "@types/react-dom": "16.8.5",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.0",
-    "typescript": "3.5.3",
-    "unfetch": "^4.1.0",
-    "yup": "^0.27.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "npm run unit",
+    "validate": "circleci config validate .circleci/config.yml",
+    "process": "circleci config process .circleci/config.yml",
+    "build": "echo building app 😃",
+    "server": "node ./server",
+    "unit": "ava-ts --verbose 'test/*.test.ts'",
+    "cy:run": "cypress run",
+    "delete:reports": "rm cypress/results/* || true",
+    "prereport": "npm run delete:reports",
+    "report": "cypress run --record false --reporter mocha-multi-reporters --reporter-options configFile=reporter-config.json"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cypress-io/cypress-example-circleci-orb.git"
   },
+  "keywords": [],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com> (https://glebbahmutov.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cypress-io/cypress-example-circleci-orb/issues"
+  },
+  "homepage": "https://github.com/cypress-io/cypress-example-circleci-orb#readme",
   "devDependencies": {
-    "@types/validator": "^10.11.2",
-    "@types/yup": "^0.26.22",
-    "cypress": "^9.3.1"
+    "@bahmutov/print-env": "1.2.0",
+    "@types/common-tags": "1.8.0",
+    "@types/execa": "0.9.0",
+    "@types/node": "10.17.16",
+    "@types/temp-write": "3.3.0",
+    "ava": "3.3.0",
+    "ava-ts": "0.25.2",
+    "cypress": "4.0.2",
+    "execa": "2.1.0",
+    "husky": "4.3.7",
+    "js-yaml": "3.13.1",
+    "mocha": "5.2.0",
+    "mocha-junit-reporter": "1.23.3",
+    "mocha-multi-reporters": "1.1.7",
+    "temp-write": "4.0.0",
+    "ts-node": "7.0.1",
+    "typescript": "3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate && npm run unit"
+    }
   }
 }
